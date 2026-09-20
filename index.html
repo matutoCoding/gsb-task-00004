@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>合同条款评审工作台</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Contract Review Desk</p>
+          <h1>合同条款评审工作台</h1>
+          <p class="subtitle">按版本归集改法，冲突冻结、依赖连坐、意见留痕，定稿前不遗漏任何一条。</p>
+        </div>
+        <div class="top-actions">
+          <button type="button" class="btn primary" data-action="resume">继续未决</button>
+          <button type="button" class="btn" data-action="add-opinion">追加意见</button>
+          <button type="button" class="btn" data-action="new-version">生成新版本</button>
+          <button type="button" class="btn" data-action="finalize">尝试定稿</button>
+          <button type="button" class="btn" data-action="export">导出修改对照</button>
+          <button type="button" class="btn ghost" data-action="reset">重置演示</button>
+        </div>
+      </header>
+
+      <main>
+        <section id="dashboard" class="dashboard" aria-label="评审卡点概览"></section>
+
+        <section class="version-strip" aria-label="合同版本">
+          <div id="version-tabs" class="version-tabs"></div>
+          <div id="version-meta" class="version-meta"></div>
+        </section>
+
+        <section class="filters" aria-label="筛选">
+          <div id="filter-tabs" class="filter-tabs"></div>
+          <input id="search" type="search" placeholder="搜索条款号、标题、提意见人或内容" />
+        </section>
+
+        <section id="clauses" class="clause-list" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <div id="modal-backdrop" class="modal-backdrop" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <header>
+          <h2 id="modal-title"></h2>
+          <button type="button" class="icon-btn" data-modal-close aria-label="关闭">×</button>
+        </header>
+        <form id="modal-form"></form>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <script src="app.js"></script>
+  </body>
+</html>
