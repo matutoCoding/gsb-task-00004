@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合同条款评审看板</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo">条</div>
+      <div>
+        <div class="contract-title" id="contractTitle">合同评审</div>
+        <div class="contract-sub" id="contractSub"></div>
+      </div>
+      <span id="finalizedBadge" class="badge badge-finalized hidden">已定稿</span>
+    </div>
+    <div class="topbar-actions">
+      <span id="saveState" class="save-state"></span>
+      <button class="btn" data-action="open-dashboard">📊 卡点总览</button>
+      <button class="btn" data-action="new-version">🆕 新版本</button>
+      <button class="btn btn-primary" data-action="export-report">📄 导出修改对照</button>
+      <button class="btn btn-warn" id="finalizeBtn" data-action="finalize-contract">🔒 合同定稿</button>
+      <button class="btn btn-ghost" data-action="reset-demo" title="清空并恢复演示数据">重置演示</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-hint">条款列表（按条号）</div>
+      <div id="clauseList"></div>
+      <div class="sidebar-foot">
+        <div class="legend"><span class="dot dot-frozen"></span> 冲突冻结 / 连带</div>
+        <div class="legend"><span class="dot dot-ruling"></span> 待评审组裁定</div>
+        <div class="legend"><span class="dot dot-pending"></span> 待定稿</div>
+        <div class="legend"><span class="dot dot-done"></span> 已定稿</div>
+      </div>
+    </aside>
+
+    <main class="main" id="mainPane"></main>
+
+    <aside class="rightbar">
+      <div class="rightbar-title">操作记录</div>
+      <div id="activityLog"></div>
+    </aside>
+  </div>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
